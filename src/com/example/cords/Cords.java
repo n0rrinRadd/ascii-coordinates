@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
 
-public class Cords {
+public class Cords  {
 
     static String FILEPATH = "src/resources/data/coords.txt";
 
@@ -27,16 +27,24 @@ public class Cords {
         // print the correct ascii character(s) at the specified x,y coordinates from the arrays.
 
         // first coordinate should print out "@"
-        printAsciiCharacter(board, "28", "14");
+        if (args.length > 0){
+            printAsciiCharacter(board, args[0], args[1]);
+        }
+        else {
 
-        // random coordinate should print TBD
-        printAsciiCharacter(board, board[randomNum][0], board[randomNum][1]);
+            System.out.println("No arguments found, running test simulations");
+            // first coordinate should print out "@"
+            printAsciiCharacter(board, "28", "14");
 
-        // last coordinate should print out ","
-        printAsciiCharacter(board, "34", "17");
+            // random coordinate should print TBD
+            printAsciiCharacter(board, board[randomNum][0], board[randomNum][1]);
 
-        // non-existent coordinate should print out "X, Y coordinates not found"
-        printAsciiCharacter(board, "1000000", "1000000");
+            // last coordinate should print out ","
+            printAsciiCharacter(board, "34", "17");
+
+            // non-existent coordinate should print out "X, Y coordinates not found"
+            printAsciiCharacter(board, "1000000", "1000000");
+        }
 
     }
 
