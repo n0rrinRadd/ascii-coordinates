@@ -35,6 +35,9 @@ public class Cords {
         // last coordinate should print out ","
         printAsciiCharacter(board, "34", "17");
 
+        // non-existent coordinate should print out "X, Y coordinates not found"
+        printAsciiCharacter(board, "1000000", "1000000");
+
     }
 
     /**
@@ -92,15 +95,17 @@ public class Cords {
      * @param y         y coordinates
      */
     public static void printAsciiCharacter(String[][] multiD, String x, String y){
+        int match = 0;
         for (int row = 0; row < multiD.length; row++){
             if (multiD[row][0].contains(x) && multiD[row][1].contains(y)){
                 int num = Integer.parseInt(multiD[row][2]);
                 char character = (char) num;
                 System.out.print("Ascii character '" + character + "' was found at coordinates X:" + x + ", Y:" + y + "\n");
+                match++;
             }
-            else {
-                System.out.println("X:" + x + ", Y:" + y + " coordinates not found");
-            }
+        }
+        if (match == 0){
+            System.out.println("X:" + x + ", Y:" + y + " coordinates not found");
         }
     }
 }
